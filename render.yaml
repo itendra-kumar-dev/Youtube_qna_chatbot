@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: nova-api
+    runtime: docker
+    rootDir: api
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
