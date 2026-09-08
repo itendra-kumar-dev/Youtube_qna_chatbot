@@ -4,7 +4,7 @@ NOVA is a Chrome extension that adds an optional chat rail to YouTube. It reads 
 
 ## Run locally
 
-1. Copy `.env.example` to `.env` and add an OpenAI key. NOVA is strictly RAG-based: it embeds transcript chunks, retrieves relevant context, and generates answers only from that context.
+1. Copy `.env.example` to `api/.env` and add a new OpenAI key. NOVA is strictly RAG-based: it embeds transcript chunks, retrieves relevant context, and generates answers only from that context.
 2. Start the API: `cd api && python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && uvicorn main:app --reload`.
 3. Build the extension: `cd extension && npm run build`.
 4. Open `chrome://extensions`, enable Developer mode, choose **Load unpacked**, and select `extension/dist`.

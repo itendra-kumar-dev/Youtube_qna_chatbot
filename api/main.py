@@ -7,11 +7,14 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from youtube_transcript_api import YouTubeTranscriptApi
+from dotenv import load_dotenv
 
 try:
     from openai import OpenAI
 except ImportError:
     OpenAI = None
+
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 app = FastAPI(title="NOVA API", version="0.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=os.getenv("ALLOWED_ORIGINS", "*").split(","), allow_methods=["*"], allow_headers=["*"])
