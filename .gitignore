@@ -5,3 +5,5 @@ __pycache__/
 *.pyc
 extension/node_modules/
 extension/dist/
+extension/*.crx
+extension/*.pem
