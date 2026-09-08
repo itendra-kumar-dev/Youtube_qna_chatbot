@@ -64,6 +64,11 @@ def health() -> dict[str, str]:
     return {"status": "ok", "service": "nova-api"}
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+    return {"service": "NOVA API", "status": "running", "health": "/health", "ask": "/api/ask"}
+
+
 @app.post("/api/ask")
 def ask(request: AskRequest) -> dict[str, Any]:
     transcript = transcript_for(request.video_id)
