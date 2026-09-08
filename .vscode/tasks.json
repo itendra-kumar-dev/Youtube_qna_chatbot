@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "NOVA: API", "type": "shell", "command": "python3 -m uvicorn main:app --reload", "options": {"cwd": "${workspaceFolder}/api"}, "isBackground": true, "problemMatcher": []},
+    {"label": "NOVA: Build extension", "type": "shell", "command": "npm run build", "options": {"cwd": "${workspaceFolder}/extension"}, "group": "build", "problemMatcher": ["$tsc"]},
+    {"label": "NOVA: Start full stack", "dependsOn": ["NOVA: API", "NOVA: Build extension"], "dependsOrder": "parallel", "problemMatcher": []}
+  ]
+}
