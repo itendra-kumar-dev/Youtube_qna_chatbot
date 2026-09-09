@@ -40,7 +40,14 @@ def cosine(left: list[float], right: list[float]) -> float:
 @lru_cache(maxsize=32)
 def transcript_for(video_id: str) -> str:
     try:
-        fetched = YouTubeTranscriptApi().fetch(video_id, languages=["en"])
+        transcript_api = YouTubeTranscriptApi()
+        available = list(transcript_api.list(video_id))
+        preferred_codes = ["en", "hi"]
+        selected = next((item for code in preferred_codes for item in available if item.language_code == code), None)
+        selected = selected or (available[0] if available else None)
+        if selected is None:
+            raise ValueError("No transcripts are available for this video")
+        fetched = selected.fetch()
         return " ".join(item.text for item in fetched)
     except Exception as error:
         raise HTTPException(status_code=422, detail=f"Transcript unavailable: {error}") from error
