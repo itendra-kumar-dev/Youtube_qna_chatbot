@@ -1,11 +1,45 @@
 {
-  "manifest_version": 3,
-  "name": "NOVA - Ask Your Video",
-  "version": "0.1.0",
-  "description": "Ask grounded questions about the YouTube video you are watching.",
-  "permissions": ["storage"],
-  "host_permissions": ["https://www.youtube.com/*", "https://youtube.com/*"],
-  "content_scripts": [{"matches": ["https://www.youtube.com/*", "https://youtube.com/*"], "js": ["content.js"], "css": ["content.css"], "run_at": "document_idle"}],
-  "web_accessible_resources": [{"resources": ["index.html", "assets/*"], "matches": ["https://www.youtube.com/*", "https://youtube.com/*"]}],
-  "action": {"default_title": "Toggle NOVA on YouTube"}
+    "manifest_version": 3,
+    "name": "NOVA - Ask Your Video",
+    "version": "0.1.0",
+    "description": "Ask grounded questions about the YouTube video you are watching.",
+    "permissions": [
+        "storage"
+    ],
+    "host_permissions": [
+        "https://www.youtube.com/*",
+        "https://youtube.com/*",
+        "http://localhost:8000/*",
+        "http://127.0.0.1:8000/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/*",
+                "https://youtube.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "index.html",
+                "assets/*"
+            ],
+            "matches": [
+                "https://www.youtube.com/*",
+                "https://youtube.com/*"
+            ]
+        }
+    ],
+    "action": {
+        "default_title": "Toggle NOVA on YouTube"
+    }
 }
