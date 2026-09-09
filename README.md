@@ -6,8 +6,11 @@ NOVA is a Chrome extension that adds an optional chat rail to YouTube. It reads 
 
 1. Create `api/.env` and add your new OpenAI key. NOVA is strictly RAG-based: it embeds transcript chunks, retrieves relevant context, and generates answers only from that context.
 2. Start the API: `cd api && python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && uvicorn main:app --reload`.
-3. Build the extension: `cd extension && npm run build`.
-4. Open `chrome://extensions`, enable Developer mode, choose **Load unpacked**, and select `extension/dist`.
+3. Start the Streamlit UI: `streamlit run streamlit_app.py` and open `http://localhost:8501`.
+4. Build the extension: `cd extension && npm run build`.
+5. Open `chrome://extensions`, enable Developer mode, choose **Load unpacked**, and select `extension/dist`.
+
+The Streamlit UI is browser-independent and works in Chrome, Safari, Firefox, Edge, and other modern browsers. For a hosted Streamlit deployment, set the `NOVA_API_URL` environment variable to the deployed FastAPI URL, then deploy `streamlit_app.py` from the repository root using `requirements.txt`.
 
 ## Deploy
 
